@@ -1,0 +1,195 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema Hotel
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema Hotel
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `Hotel` DEFAULT CHARACTER SET latin1 ;
+USE `Hotel` ;
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Address`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Address` (
+  `AddressID` INT(11) NOT NULL AUTO_INCREMENT,
+  `AddressNumber` VARCHAR(10) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `Street` VARCHAR(20) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `State` CHAR(2) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  `ZipCode` VARCHAR(15) CHARACTER SET 'utf8' NULL DEFAULT NULL,
+  PRIMARY KEY (`AddressID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 201
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Person`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Person` (
+  `PersonID` INT NOT NULL,
+  PRIMARY KEY (`PersonID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Plant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Plant` (
+  `PlantID` INT NOT NULL,
+  `PlantType` VARCHAR(45) NULL,
+  `PlantCommonNames` VARCHAR(45) NULL,
+  `PlantLatinNames` VARCHAR(45) NULL,
+  PRIMARY KEY (`PlantID`))
+ENGINE = InnoDB
+COMMENT = 'Should have ';
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Location`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Location` (
+  `LocationID` INT NOT NULL,
+  `isPublic` TINYINT(1) NULL,
+  `isPaid` TINYINT(1) NULL,
+  `Latitude` VARCHAR(45) NULL,
+  `Longitude` VARCHAR(45) NULL,
+  PRIMARY KEY (`LocationID`))
+ENGINE = InnoDB
+COMMENT = 'Would you say that a location can have an address, or that an address can have a location?\nA location is a pre-defined area in which a user has found a plant. What if that area crosses boundaries between addresses?\nA location can have more than one address, and an address can have more than one location. But address is nullable within a location, since it might be in some woods....';
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Illness`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Illness` (
+  `IllnessID` INT NOT NULL,
+  `IllnessName` VARCHAR(45) NULL,
+  PRIMARY KEY (`IllnessID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Person`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Person` (
+  `PersonID` INT NOT NULL,
+  PRIMARY KEY (`PersonID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`PropertyOwner`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`PropertyOwner` (
+  `PropertyOwernID` INT NOT NULL,
+  `Person_PersonID` INT NOT NULL,
+  PRIMARY KEY (`PropertyOwernID`),
+  INDEX `fk_PropertyOwner_Person1_idx` (`Person_PersonID` ASC),
+  CONSTRAINT `fk_PropertyOwner_Person1`
+    FOREIGN KEY (`Person_PersonID`)
+    REFERENCES `Hotel`.`Person` (`PersonID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Plant_Location`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Plant_Location` (
+  `Plant_PlantID` INT NOT NULL,
+  `Location_LocationID` INT NOT NULL,
+  `FreeToPick` TINYINT(1) NULL,
+  `PickLimit` INT NULL,
+  INDEX `fk_Plant_Location_Plant1_idx` (`Plant_PlantID` ASC),
+  INDEX `fk_Plant_Location_Location1_idx` (`Location_LocationID` ASC),
+  CONSTRAINT `fk_Plant_Location_Plant1`
+    FOREIGN KEY (`Plant_PlantID`)
+    REFERENCES `Hotel`.`Plant` (`PlantID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Plant_Location_Location1`
+    FOREIGN KEY (`Location_LocationID`)
+    REFERENCES `Hotel`.`Location` (`LocationID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Plant_Illness`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Plant_Illness` (
+  `EffectivenessRating` INT NULL,
+  `Plant_PlantID` INT NOT NULL,
+  `Illness_IllnessID` INT NOT NULL,
+  INDEX `fk_Plant_Illness_Plant1_idx` (`Plant_PlantID` ASC),
+  INDEX `fk_Plant_Illness_Illness1_idx` (`Illness_IllnessID` ASC),
+  CONSTRAINT `fk_Plant_Illness_Plant1`
+    FOREIGN KEY (`Plant_PlantID`)
+    REFERENCES `Hotel`.`Plant` (`PlantID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Plant_Illness_Illness1`
+    FOREIGN KEY (`Illness_IllnessID`)
+    REFERENCES `Hotel`.`Illness` (`IllnessID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Photographer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Photographer` (
+  `PhotographerID` INT NOT NULL,
+  `Person_PersonID` INT NOT NULL,
+  PRIMARY KEY (`PhotographerID`),
+  INDEX `fk_Photographer_Person1_idx` (`Person_PersonID` ASC),
+  CONSTRAINT `fk_Photographer_Person1`
+    FOREIGN KEY (`Person_PersonID`)
+    REFERENCES `Hotel`.`Person` (`PersonID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Hotel`.`Photographs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Hotel`.`Photographs` (
+  `PhotographID` INT NOT NULL,
+  `DateTaken` VARCHAR(45) NULL,
+  `Plant_PlantID` INT NOT NULL,
+  `Photographer_PhotographerID` INT NOT NULL,
+  PRIMARY KEY (`PhotographID`),
+  INDEX `fk_Photographs_Plant1_idx` (`Plant_PlantID` ASC),
+  INDEX `fk_Photographs_Photographer1_idx` (`Photographer_PhotographerID` ASC),
+  CONSTRAINT `fk_Photographs_Plant1`
+    FOREIGN KEY (`Plant_PlantID`)
+    REFERENCES `Hotel`.`Plant` (`PlantID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Photographs_Photographer1`
+    FOREIGN KEY (`Photographer_PhotographerID`)
+    REFERENCES `Hotel`.`Photographer` (`PhotographerID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

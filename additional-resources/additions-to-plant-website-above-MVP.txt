@@ -1,0 +1,5 @@
+Additions to Plant Medicine site:
+
+make option for field trips (for schools k up to university)
+have links to research on the plant and plant_illness
+

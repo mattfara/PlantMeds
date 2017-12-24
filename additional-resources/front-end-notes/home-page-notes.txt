@@ -1,0 +1,28 @@
+Home page
+
+home page image is established
+
+make buttons using btn-inverse property
+red for illness
+green for plant
+yellow for log in
+
+use images as background all the way down
+-maybe a white background with a caduceus at center -- text surrounding it in a triangluar pattern around the design
+
+
+							alksdjf;adlkf   		||			alksdjf;adlkf	
+						alksdjf;adlkf				||				alksdjf;adlkf
+					alksdjf;adlkf					||					alksdjf;adlkf
+				alksdjf;adlkf						||						alksdjf;adlkf
+					alksdjf;adlkf					||					alksdjf;adlkf
+						alksdjf;adlkf				||				alksdjf;adlkf
+							alksdjf;adlkf			||			alksdjf;adlkf
+
+
+-how do i get changes in the css file to render more easily in the browser, updating as I please?
+-how do I get everything positioned relatively, so that we can view on phones?
+
+Contact info at bottom -- load it up with address tag, rich html5 -- black background, small sleek text
+
+If only doing get requests on a non-admin page, is it secure to use AJAX? When is it safer to use straight JSPs? What is the name of the straight JSP?

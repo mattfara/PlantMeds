@@ -1,0 +1,28 @@
+uncertainties
+-------------
+
+
+1. in db
+	*how should the variety of "people" interacting with website be treated?
+		-
+	*how should i indicate that a plant_illness can have many instructions for use
+	*how do i deal with dates? what's worth having in there?
+	*how do i link more than one piece of research to a plant_illness
+	*is it worth it to make a Location_PropertyOwner bridge table? what advantage would it confer? disadvantage?
+	*how are the relationships btw User Photographer PropertyOwner etc modeled as DTOs?
+	*is it necessary to split these up so much? could I just have a single user table with several fields?
+	*if i want users to be able to upload photos of themselves, should that be in a different table?
+	*if an Authority table exists in db, does it also exist as dto?
+	*does it make sense to use inheritance for users? abstract user class that photographer, admin, etc inherit from?
+	
+
+2. in front end
+3. in java
+4. in functionality
+	*what's worth pursuing?
+		-research function
+		-school/field trip function
+		-
+it's ok. just write down whatever ideas you have and then maybe you can implement them later
+
+

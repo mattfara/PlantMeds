@@ -1,0 +1,54 @@
+Plant Medicine/Food website
+---------------------------
+
+functionality
+-------------
+
+#search
+1. search local area (search radius) by illness
+2. search local area (search radius) by recipe
+3. search local area (search radius) by plant
+4. search local area (search radius) by user reports
+	*if i know a fellow user, i want to be able to search for their uploads
+6. view map of all plant_locations given start location and radius
+
+#social
+*make user groups for sharing local info
+
+
+#planning
+*plan an outing
+	-options for academic settings
+	-options for lay people
+
+#contributing to database
+*upload plant_location
+	maybe have it be that a user must supply the following:
+		a photograph OR	a name (common or latin)
+		a location (coordinate)
+		++whether the land is public -- any way to have google assign this rather than let user do it?
+		whether the location is on their propery
+			if so, whether they leave it open to foraging by other users
+			make option for private/group sharing
+				^^how to handle this situation? see private/group sharing below....		
+		
+		
+	optional 	
+
+		
+	-what is nullable?
+*vote in IDs
+	different users have different levels of expertise -- could show both
+	people can vote on which plant a picture shows
+	shows search user those stats so they can judge for themselves whether to trust
+
+
+#private/group sharing
+	note: if a user only wants plant_locations on their property to be viewable by selected other users, should give an 			option
+
+#side notes
+this would be similar to the geochaching websites
+
+
+
+

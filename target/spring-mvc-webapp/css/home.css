@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 23, 2017, 6:36:32 PM
+    Author     : matt
+*/
+
+body, html {
+    height: 100%;
+}
+
+.title{
+    font-family: 'Marck Script', cursive;
+    font-size: 300%;
+    color: white;
+}
+
+
+.top-left {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+}
+
+.stackedButtons{
+    position: absolute;
+    top: 135px;
+    left: 60px;
+}
+
+/*cursors*/
+#btn-searchByIllness{cursor: url('../images/sick-face-cursor.jpg'), auto;}
+#btn-searchByPlant{cursor: url('../images/plant-cursor.jpg'), auto;}
+
+.separated{
+    margin-bottom: 10px;
+}
+
+#homePageImg{
+    background-image: url('../images/homePage.jpg');
+    
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pageDivider{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    height: 20%;
+    width: 20%;
+    position: relative;
+    left: 220px;
+}
+
+
+#searchByIllness{ color: red; }
+#searchByPlant{ color: green; }
+#logIn{ color: blue; }
+/*#about { background: black; }*/
