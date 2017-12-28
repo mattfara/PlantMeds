@@ -65,15 +65,15 @@ INSERT INTO `AssessmentForms` (`effectiveness_score`,`date_used`,`comments`,`pla
 
 
 
-INSERT INTO `Plant_LocationImages` (`image`,`date_created`) VALUES (LOAD_FILE('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/plant_cursor.jpg'),'2017-12-23');
-INSERT INTO `Plant_LocationImages` (`image`,`date_created`) VALUES (LOAD_FILE('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/sick_face_cursor.jpg'),'2017-12-23');
+INSERT INTO `Plant_LocationImages` (`image`,`date_created`) VALUES ('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/plant_cursor.jpg','2017-12-23');
+INSERT INTO `Plant_LocationImages` (`image`,`date_created`) VALUES ('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/sick_face_cursor.jpg','2017-12-23');
 
 
 INSERT INTO `Plant_Locations` (`pick_limit`,`plant_id`,`location_id`,`plant_location_image_id`, `user_id`) VALUES ('25','1','1','1','1');
 INSERT INTO `Plant_Locations` (`pick_limit`,`plant_id`,`location_id`,`plant_location_image_id`, `user_id`) VALUES ('300','2','2','2','2');
 
-INSERT INTO `PlantImages` (`image`,`plant_id`,`date_created`) VALUES (LOAD_FILE('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/pageDivider-floral.png'),'1','2017-12-23');
-INSERT INTO `PlantImages` (`image`,`plant_id`,`date_created`) VALUES (LOAD_FILE('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/homePage.jpg'),'2','2017-12-23');
+INSERT INTO `PlantImages` (`image`,`plant_id`,`date_created`) VALUES ('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/pageDivider-floral.png','1','2017-12-23');
+INSERT INTO `PlantImages` (`image`,`plant_id`,`date_created`) VALUES ('/home/matt/Documents/personal_projects/PlantMeds/src/main/webapp/images/homePage.jpg','2','2017-12-23');
 
 
 

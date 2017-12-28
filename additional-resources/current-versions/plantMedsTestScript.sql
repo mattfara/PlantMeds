@@ -167,11 +167,11 @@ DROP TABLE IF EXISTS `PlantMeds-test`.`IllnessTechnicalNames` ;
 CREATE TABLE IF NOT EXISTS `PlantMeds-test`.`IllnessTechnicalNames` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `llness_id` INT(11) NOT NULL,
+  `illness_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_IllnessTechnicalName_Illness1_idx` (`llness_id` ASC),
+  INDEX `fk_IllnessTechnicalName_Illness1_idx` (`illness_id` ASC),
   CONSTRAINT `fk_IllnessTechnicalName_Illness1`
-    FOREIGN KEY (`llness_id`)
+    FOREIGN KEY (`illness_id`)
     REFERENCES `PlantMeds-test`.`Illnesses` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -243,7 +243,7 @@ DROP TABLE IF EXISTS `PlantMeds-test`.`PlantImages` ;
 
 CREATE TABLE IF NOT EXISTS `PlantMeds-test`.`PlantImages` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `image` LONGBLOB NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
   `plant_id` INT(11) NOT NULL,
   `date_created` DATE NOT NULL,
   PRIMARY KEY (`id`),
@@ -285,7 +285,7 @@ DROP TABLE IF EXISTS `PlantMeds-test`.`Plant_LocationImages` ;
 
 CREATE TABLE IF NOT EXISTS `PlantMeds-test`.`Plant_LocationImages` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `image` LONGBLOB NOT NULL,
+  `image` VARCHAR(100) NOT NULL,
   `date_created` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
